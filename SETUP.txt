@@ -1,0 +1,15 @@
+MRANTI Typing Race | GitHub Pages + HTTPS rooms
+
+Solo practice
+Open index.html and select Solo practice. No moderator, code or room server is needed.
+
+Online setup for the game owner (once)
+1. In the Cloudflare dashboard, create a D1 database named mranti-typing-race. Open its Console and execute the statement from schema.sql.
+2. In Workers & Pages, create a Worker. Open Edit code, replace the starter module with the complete contents of worker.mjs and deploy it.
+3. In the Worker's Bindings, add a D1 database binding. Use variable name DB and select the database from step 1.
+4. In Worker Settings, add a text environment variable ALLOWED_ORIGINS with the exact value https://shaarialwi.github.io (no trailing slash or repository path). Deploy the changes.
+5. Copy the Worker's HTTPS origin. In index.html, find window.MRANTI_ROOM_SERVER = "" and paste the origin between the quotes. Leave off /api/race. Upload that index.html to main in shaarialwi/mranti-typing-race.
+6. Once Pages has published it, both moderator and players open https://shaarialwi.github.io/mranti-typing-race/ and refresh. The moderator creates a NEW room and shares its code. Players enter their name and code and select Join. Accepted players appear automatically in the roster, then select I'm ready.
+7. Test with two laptops before the staff race. Rooms created in the old browser-to-browser mode cannot transfer into the HTTPS service. If the server address is blank the page uses the existing browser-to-browser room method.
+
+The game uses nicknames and room codes. It does not perform staff sign-in. The Cloudflare account owner controls the database and usage. No account tokens belong in the HTML.
